@@ -64,3 +64,15 @@ class PDBModel(torch.nn.Module):
 
 
 
+class MySchNetModel(torch.nn.Module):
+    def __init__(self):
+        super(MySchNetModel, self).__init__()
+        self.schnet = SchNet(hidden_channels=128, num_filters=128, num_interactions=3)
+
+    def forward(self, data):
+        # 'data' debe incluir posiciones atómicas, números atómicos, etc.
+        return self.schnet(data)
+
+
+
+
