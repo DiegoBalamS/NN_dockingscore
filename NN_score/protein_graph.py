@@ -1,4 +1,6 @@
 import pandas as pd
+import torch
+from torch_geometric.nn import SchNet
 
 def leer_pdb(archivo_pdb):
     with open(archivo_pdb, 'r') as file:
@@ -32,3 +34,33 @@ Este código leerá un archivo PDB y extraerá el tipo de átomo y sus coordenad
 
 Este proceso puede variar en complejidad dependiendo de la especificidad de tus necesidades y los detalles de tu proyecto. Asegúrate de ajustar estos pasos según lo que requiera tu investigación o aplicación específica.
 """
+
+modelo_pdb = PDBModel()
+datos_pdb_procesados = preprocess_pdb_data('ruta_a_tu_archivo_pdb')
+vector_representacion = modelo_pdb(datos_pdb_procesados)
+
+"""
+En este caso el PDBModel() es la funcion que usara SchNet para generar el vector apartir del archivo PDB.
+La funcion preprocess_pdb_data tomara el archivo PDB y generar un archivo adecuado para ser usado por SchNet
+"""
+
+
+class PDBModel(torch.nn.Module):
+    def __init__(self):
+        super(PDBModel, self).__init__()
+        # Inicializar SchNet. Aquí puedes ajustar parámetros como el número de capas.
+        self.schnet = SchNet()
+
+
+class PDBModel(torch.nn.Module):
+    def __init__(self):
+        super(PDBModel, self).__init__()
+        # Inicializar SchNet
+        self.schnet = SchNet()
+
+    def forward(self, data):
+        # data contiene las posiciones atómicas y otros atributos necesarios
+        return self.schnet(data)
+
+
+
