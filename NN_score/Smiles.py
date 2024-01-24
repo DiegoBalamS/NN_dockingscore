@@ -25,4 +25,3 @@ def vocab(smile_file):
     with open('project/vocab.txt','a') as f:
         for v in vocab:
             f.write(v+'\n')
-
