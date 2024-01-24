@@ -1,19 +1,22 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from dockschnet import dockschnet
 
-# Definición de dos redes neuronales
-class NeuralNet1(nn.Module):
-    # Define la arquitectura de la primera red
-    pass
 
-class NeuralNet2(nn.Module):
-    # Define la arquitectura de la segunda red
-    pass
+pad_index = 0    
+unk_index = 1
+eos_index = 2
+sos_index = 3
+mask_index = 4
 
-# Instanciación de las redes
-net1 = NeuralNet1()
-net2 = NeuralNet2()
+vocab = WordVocab.load_vocab('project/vocab.pkl')
+
+net1 = TrfmSeq2seq(len(vocab), 256, len(vocab), 4)
+net1.load_state_dict(torch.load('project/trfm_12_23000.pkl',map_location=torch.device('cpu')))
+net1.eval()
+
+net2=dockschnet(hidden_channels=16, num_filters=16, num_interactions=3)
 
 # Definición del optimizador
 optimizer = optim.Adam(list(net1.parameters()) + list(net2.parameters()), lr=0.001)
