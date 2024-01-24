@@ -1,6 +1,7 @@
 import pandas as pd
 import torch
-from torch_geometric.nn import SchNet
+from rdkit import Chem
+from rdkit import AllChem
 
 # Cargar un archivo PDB
 mol = Chem.MolFromPDBFile('project/pdb/cluster_6_random_structure.pdb', removeHs=False)
