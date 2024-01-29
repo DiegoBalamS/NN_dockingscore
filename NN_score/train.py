@@ -98,7 +98,7 @@ for epoch in range(num_epochs):
         dot_prod = dot_product(output1, output2)
 
         # Loss function
-        loss = criterion(dot_prod, target) # 'target' depende de tu tarea específica
+        loss = torch.nn.functional.nll_loss(output, target.view(-1))(dot_prod, target) # 'target' depende de tu tarea específica
 
         # Backpropagation
         optimizer.zero_grad()
