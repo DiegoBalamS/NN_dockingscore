@@ -16,6 +16,8 @@ data = 'project/training_info.txt'
 input = []
 output = []
 
+pdb_locations=['revised_structures/cluster_0_random_structure.pdbqt','revised_structures/cluster_1_random_structure.pdbqt','revised_structures/cluster_2_random_structure.pdbqt','revised_structures/cluster_3_random_structure.pdbqt','revised_structures/cluster_4_random_structure.pdbqt','revised_structures/cluster_5_random_structure.pdbqt','revised_structures/cluster_6_random_structure.pdbqt','revised_structures/cluster_7_random_structure.pdbqt','revised_structures/cluster_8_random_structure.pdbqt','revised_structures/cluster_9_random_structure.pdbqt','revised_structures/cluster_10_random_structure.pdbqt','revised_structures/cluster_11_random_structure.pdbqt','revised_structures/cluster_12_random_structure.pdbqt','revised_structures/cluster_13_random_structure.pdbqt','revised_structures/cluster_14_random_structure.pdbqt','revised_structures/cluster_15_random_structure.pdbqt']
+
 with open(data, 'r') as file:
     for linea in file:
         
@@ -85,7 +87,7 @@ for epoch in range(num_epochs):
         xid, _ = get_array(x_split)
         data1=trfm.encode(torch.t(xid))
 
-        pdb_file=
+        pdb_file=pdb_locations[dat[1]]
         data2=prepare(pdb_file)
         
         
