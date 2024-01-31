@@ -6,7 +6,7 @@ from torch_geometric.data import Data
 
 def prepare(PBD_file):
     # Cargar un archivo PDB
-    mol = Chem.MolFromPDBFile('project/pdb/cluster_6_random_structure.pdb', removeHs=False)
+    mol = Chem.MolFromPDBFile(PDB_file, removeHs=False)
 
     # Añadir hidrógenos explícitos (si es necesario)
     mol = Chem.AddHs(mol)
